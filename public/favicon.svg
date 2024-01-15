@@ -7,10 +7,11 @@
    viewBox="0 0 7.418808 7.9375"
    version="1.1"
    id="svg5"
-   sodipodi:docname="drawing.svg"
+   sodipodi:docname="favicon.svg"
    inkscape:export-filename="logo.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -26,9 +27,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.53228931"
-     inkscape:cx="71.389748"
-     inkscape:cy="-5.6360328"
+     inkscape:zoom="12.044332"
+     inkscape:cx="-455.98211"
+     inkscape:cy="-213.79351"
      inkscape:window-width="1850"
      inkscape:window-height="1011"
      inkscape:window-x="70"
@@ -124,6 +125,17 @@
          d="m 113.01449,250.77818 q -0.42668,0 -0.6705,-0.24381 -0.24382,-0.24382 -0.24382,-0.71114 V 237.1041 q 0,-0.46732 0.24382,-0.69081 0.24382,-0.24382 0.6705,-0.24382 0.44699,0 0.69081,0.24382 0.24382,0.22349 0.24382,0.69081 v 8.00533 h 0.0406 l 3.98234,-3.88075 q 0.30477,-0.30478 0.54859,-0.46732 0.24382,-0.16255 0.62986,-0.16255 0.38605,0 0.58923,0.20319 0.20318,0.18286 0.20318,0.48763 0,0.28445 -0.28445,0.56891 l -4.22617,4.10425 v -0.91431 l 4.61221,4.44966 q 0.28445,0.28446 0.26413,0.58923 0,0.30477 -0.22349,0.50795 -0.20319,0.18286 -0.54859,0.18286 -0.40637,0 -0.6705,-0.16254 -0.24382,-0.16255 -0.56891,-0.50795 l -4.30743,-4.06362 h -0.0406 v 3.77916 q 0,0.95495 -0.93463,0.95495 z"
          style="font-weight:500;font-family:Nunito;-inkscape-font-specification:'Nunito Medium';fill:#333333;fill-opacity:1"
          id="path1653-0" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.37583px;font-family:'Iosevka SS06';-inkscape-font-specification:'Iosevka SS06';letter-spacing:0px;fill:#ffffff;stroke-width:0.447985"
+         x="23.95038"
+         y="96.115211"
+         id="text250"><tspan
+           sodipodi:role="line"
+           id="tspan248"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:expanded;font-family:'Iosevka SS06';-inkscape-font-specification:'Iosevka SS06 Italic Expanded';stroke-width:0.447985"
+           x="23.95038"
+           y="96.115211">io</tspan></text>
     </g>
   </g>
 </svg>

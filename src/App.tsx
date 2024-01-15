@@ -1,54 +1,68 @@
-import { useState, ChangeEvent } from 'react';
-import { css, Global } from '@emotion/react';
-import { City } from './types';
-import useFetch from './hooks/useFetch';
-import SearchInput from './components/SearchInput';
-import SuggestionsList from './components/SuggestionsList';
-import { globalStyles } from './styles';
-import logo from './assets/logo.svg';
+import { useState, useEffect, CSSProperties } from 'react';
+import { Repo } from './types';
+import RepoList from './components/RepoList'; // Assuming RepoList is adapted for React
+import fetchRepos from './api/fetchRepos'; // Assuming this API call works the same way
 
-const style = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
+const ReposContainer = () => {
+  const username = 'tj';
+  const perPage = 10;
+  const [repos, setRepos] = useState<Repo[]>([]);
+  const [noMoreRepos, setNoMoreRepos] = useState(false);
 
-  .error {
-    color: #ff0000;
-  }
-`;
+  useEffect(() => {
+    getRepos();
+  }, []); // Empty dependency array to mimic 'onMounted' in Vue
 
-function App() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const { data: cities, error } = useFetch<City>('/data.json');
+  const getRepos = async () => {
+    if (noMoreRepos) return;
 
-  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+    try {
+      const newRepos = await fetchRepos(username, perPage);
+      if (newRepos.length === 0) {
+        setNoMoreRepos(true);
+      }
+      setRepos(prevRepos => [...prevRepos, ...newRepos]);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const filteredCities = cities.filter(city =>
-    city.city.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    city.state.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
-    <>
-      <Global styles={globalStyles}/>
-      <div className="app" css={style}>
-        <img src={logo} alt="Populook" />
-        <SearchInput value={searchTerm} onChange={handleSearch} />
-        {error ? (
-          <p className="error">{error}</p>
-        ) : searchTerm ? (
-          <SuggestionsList cities={filteredCities} searchTerm={searchTerm}/>
-        ) : (
-          <p>Welcome to Populook! Enter a city or state name to find its population.</p>
-        )}
-      </div>
-    </>
+    <main style={styles.main}>
+      <h1 style={styles.h1}>{`${username}'s repos`}</h1>
+      {/* Assuming RepoList handles the scroll action internally */}
+      <RepoList repos={repos} onScrollAction={getRepos} />
+      <p style={styles.p}>
+        Crafted by <a href="https://github.com/weiying-chen" style={styles.a}>Wei-ying Chen</a>
+      </p>
+    </main>
   );
-}
+};
 
-export default App;
+const styles: Record<string, CSSProperties> = {
+  main: {
+    fontFamily: "'Nunito', sans-serif",
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column', // Correctly typed as a FlexDirection
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  h1: {
+    color: '#222',
+    textAlign: 'center',
+    textTransform: 'capitalize',
+  },
+  p: {
+    color: '#666',
+  },
+  a: {
+    color: '#41b480',
+    textDecoration: 'none',
+  },
+  aHover: {
+    textDecoration: 'underline',
+  },
+};
+
+export default ReposContainer;
