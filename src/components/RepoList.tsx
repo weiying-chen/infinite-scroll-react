@@ -16,7 +16,7 @@ interface RepoListProps {
   scrollAction: () => void;
 }
 
-const RepoList = ({ repos, scrollAction }: RepoListProps) => {
+export default function RepoList ({ repos, scrollAction }: RepoListProps) {
   const reposEl = useRef(null);
   const onInfiniteScroll = useInfiniteScroll(reposEl);
 
@@ -25,7 +25,7 @@ const RepoList = ({ repos, scrollAction }: RepoListProps) => {
   })
 
   return (
-    <div {...stylex.props(styles.repos)}>
+    <div ref={reposEl} {...stylex.props(styles.repos)}>
       {repos.map(repo => (
         <div key={repo.id} {...stylex.props(styles.repo)}>
           <h3 {...stylex.props(styles.h3)}>
@@ -94,6 +94,3 @@ const styles = stylex.create({
     margin: '6px 0',
   },
 });
-
-export default RepoList;
-
