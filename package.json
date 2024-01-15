@@ -14,6 +14,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@stylexjs/stylex": "^0.4.1",
     "axios": "^1.6.2",
     "beautiful-react-hooks": "^5.0.1",
     "react": "^18.2.0",
@@ -29,6 +30,13 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vite-plugin-stylex": "^0.4.1"
+  },
+  "overrides": {
+    "vite-plugin-stylex": {
+      "@stylexjs/babel-plugin": "0.4.1"
+    }
   }
 }
+

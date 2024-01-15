@@ -1,9 +1,10 @@
-import { useState, useEffect, CSSProperties } from 'react';
+import { useState, useEffect } from 'react';
+import * as stylex from "@stylexjs/stylex";
 import { Repo } from './types';
 import RepoList from './components/RepoList'; // Assuming RepoList is adapted for React
 import fetchRepos from './api/fetchRepos'; // Assuming this API call works the same way
 
-const ReposContainer = () => {
+export default function App() {
   const username = 'tj';
   const perPage = 10;
   const [repos, setRepos] = useState<Repo[]>([]);
@@ -28,18 +29,17 @@ const ReposContainer = () => {
   };
 
   return (
-    <main style={styles.main}>
-      <h1 style={styles.h1}>{`${username}'s repos`}</h1>
-      {/* Assuming RepoList handles the scroll action internally */}
+    <main {...stylex.props(styles.main)}>
+      <h1 {...stylex.props(styles.h1)}>{`${username}'s repos`}</h1>
       <RepoList repos={repos} scrollAction={getRepos} />
-      <p style={styles.p}>
-        Crafted by <a href="https://github.com/weiying-chen" style={styles.a}>Wei-ying Chen</a>
+      <p {...stylex.props(styles.p)}>
+        Crafted by <a href="https://github.com/weiying-chen" {...stylex.props(styles.a)}>Wei-ying Chen</a>
       </p>
     </main>
   );
 };
 
-const styles: Record<string, CSSProperties> = {
+const styles = stylex.create({
   main: {
     fontFamily: "'Nunito', sans-serif",
     width: '100%',
@@ -63,6 +63,4 @@ const styles: Record<string, CSSProperties> = {
   aHover: {
     textDecoration: 'underline',
   },
-};
-
-export default ReposContainer;
+});

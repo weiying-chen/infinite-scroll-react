@@ -1,4 +1,5 @@
-import { useRef, CSSProperties } from 'react';
+import { useRef } from 'react';
+import * as stylex from "@stylexjs/stylex";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faEye,
@@ -24,27 +25,27 @@ const RepoList = ({ repos, scrollAction }: RepoListProps) => {
   })
 
   return (
-    <div ref={reposEl} style={styles.repos}>
+    <div {...stylex.props(styles.repos)}>
       {repos.map(repo => (
-        <div key={repo.id} style={styles.repo}>
-          <h3 style={styles.h3}>
-            <a href={repo.html_url} target="_blank" style={styles.a}>
+        <div key={repo.id} {...stylex.props(styles.repo)}>
+          <h3 {...stylex.props(styles.h3)}>
+            <a href={repo.html_url} target="_blank" {...stylex.props(styles.a)}>
               {repo.name}
             </a>
           </h3>
-          <div style={styles.stats}>
-            <span style={styles.span}><FontAwesomeIcon icon={faEye} /> {repo.watchers_count}</span>
-            <span style={styles.span}><FontAwesomeIcon icon={faCodeBranch} /> {repo.forks_count}</span>
-            <span style={styles.span}><FontAwesomeIcon icon={faStar} /> {repo.stargazers_count}</span>
+          <div {...stylex.props(styles.stats)}>
+            <span {...stylex.props(styles.span)}><FontAwesomeIcon icon={faEye} /> {repo.watchers_count}</span>
+            <span {...stylex.props(styles.span)}><FontAwesomeIcon icon={faCodeBranch} /> {repo.forks_count}</span>
+            <span {...stylex.props(styles.span)}><FontAwesomeIcon icon={faStar} /> {repo.stargazers_count}</span>
           </div>
         </div>
       ))}
-      <FontAwesomeIcon icon={faSpinner} style={styles.spinner} pulse />
+      <FontAwesomeIcon icon={faSpinner} {...stylex.props(styles.spinner)} pulse />
     </div>
   );
 };
 
-const styles: Record<string, CSSProperties> = {
+const styles = stylex.create({
   repos: {
     backgroundColor: '#41b480',
     display: 'flex',
@@ -76,7 +77,7 @@ const styles: Record<string, CSSProperties> = {
     color: '#fff',
     textDecoration: 'none',
   },
-    aHover: { // Style for hover state
+  aHover: {
     textDecoration: 'underline',
   },
   stats: {
@@ -92,7 +93,7 @@ const styles: Record<string, CSSProperties> = {
     fontSize: '30px',
     margin: '6px 0',
   },
-};
+});
 
 export default RepoList;
 
