@@ -31,7 +31,7 @@ const ReposContainer = () => {
     <main style={styles.main}>
       <h1 style={styles.h1}>{`${username}'s repos`}</h1>
       {/* Assuming RepoList handles the scroll action internally */}
-      <RepoList repos={repos} onScrollAction={getRepos} />
+      <RepoList repos={repos} scrollAction={getRepos} />
       <p style={styles.p}>
         Crafted by <a href="https://github.com/weiying-chen" style={styles.a}>Wei-ying Chen</a>
       </p>

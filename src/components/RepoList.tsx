@@ -6,17 +6,22 @@ import {
   faStar,
   faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
-import { Repo } from '../types';
 
-// import useInfiniteScroll from './hooks/useInfiniteScroll'; // Assuming you have a similar hook
+import { Repo } from '../types';
+import useInfiniteScroll from 'beautiful-react-hooks/useInfiniteScroll';
 
 interface RepoListProps {
   repos: Repo[];
-  onScrollAction: () => void;
+  scrollAction: () => void;
 }
 
-const RepoList = ({ repos, onScrollAction }: RepoListProps) => {
+const RepoList = ({ repos, scrollAction }: RepoListProps) => {
   const reposEl = useRef(null);
+  const onInfiniteScroll = useInfiniteScroll(reposEl);
+
+  onInfiniteScroll(() => {
+    scrollAction()
+  })
 
   return (
     <div ref={reposEl} style={styles.repos}>
