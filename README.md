@@ -1,4 +1,4 @@
-# Populook (React)
+# Infinite Scroll (React)
 
 Infinite scroll with React
 
@@ -6,7 +6,7 @@ Infinite scroll with React
 
 **[Live Demo](https://infinite-scroll-react-demo.vercel.app/)**
 
-**[Vue Version](https://github.com/weiying-chen/populook-vue)**
+**[Vue Version](https://github.com/weiying-chen/infinite-scroll-vue)**
 
 ## Installation
 
