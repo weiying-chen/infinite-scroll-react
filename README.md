@@ -23,4 +23,7 @@ npm run dev
 
 # Build app
 npm run build
+
+# Lint files
+npx eslint "src/**/*.{ts,tsx}"
 ```
