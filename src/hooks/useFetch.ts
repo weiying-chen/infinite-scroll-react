@@ -20,11 +20,15 @@ const useFetch = <T>(dataUrl: string) => {
             setError(null);
             localStorage.setItem('cachedData', JSON.stringify(result.data));
           } else {
-            throw new Error('Oops! Something went wrong while trying to fetch the data. Please try again later.');
+            throw new Error(
+              'Oops! Something went wrong while trying to fetch the data. Please try again later.',
+            );
           }
         }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An unknown error occurred.');
+        setError(
+          err instanceof Error ? err.message : 'An unknown error occurred.',
+        );
       }
     };
 

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import * as stylex from "@stylexjs/stylex";
+import { useState, useEffect, useRef } from 'react';
+import * as stylex from '@stylexjs/stylex';
 import { Repo } from './types';
 import RepoList from './components/RepoList'; // Assuming RepoList is adapted for React
 import fetchRepos from './api/fetchRepos'; // Assuming this API call works the same way
@@ -8,36 +8,40 @@ export default function App() {
   const username = 'tj';
   const perPage = 10;
   const [repos, setRepos] = useState<Repo[]>([]);
-  const [noMoreRepos, setNoMoreRepos] = useState(false);
-
-  useEffect(() => {
-    getRepos();
-  }, []);
+  const moreReposRef = useRef(true);
 
   const getRepos = async () => {
-    if (noMoreRepos) return;
+    if (!moreReposRef.current) return;
 
     try {
       const newRepos = await fetchRepos(username, perPage);
       if (newRepos.length === 0) {
-        setNoMoreRepos(true);
+        moreReposRef.current = false;
       }
-      setRepos(prevRepos => [...prevRepos, ...newRepos]);
+      setRepos((prevRepos) => [...prevRepos, ...newRepos]);
     } catch (err) {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    getRepos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <main {...stylex.props(styles.main)}>
       <h1 {...stylex.props(styles.h1)}>{`${username}'s repos`}</h1>
       <RepoList repos={repos} scrollAction={getRepos} />
       <p {...stylex.props(styles.p)}>
-        Crafted by <a href="https://github.com/weiying-chen" {...stylex.props(styles.a)}>Wei-ying Chen</a>
+        Crafted by{' '}
+        <a href="https://github.com/weiying-chen" {...stylex.props(styles.a)}>
+          Wei-ying Chen
+        </a>
       </p>
     </main>
   );
-};
+}
 
 const styles = stylex.create({
   main: {

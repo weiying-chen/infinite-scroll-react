@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import * as stylex from "@stylexjs/stylex";
+import * as stylex from '@stylexjs/stylex';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
@@ -17,17 +17,17 @@ interface RepoListProps {
   scrollAction: () => void;
 }
 
-export default function RepoList ({ repos, scrollAction }: RepoListProps) {
+export default function RepoList({ repos, scrollAction }: RepoListProps) {
   const reposEl = useRef(null);
   const onInfiniteScroll = useInfiniteScroll(reposEl);
 
   onInfiniteScroll(() => {
-    scrollAction()
-  })
+    scrollAction();
+  });
 
   return (
     <div ref={reposEl} {...stylex.props(styles.repos)}>
-      {repos.map(repo => (
+      {repos.map((repo) => (
         <div key={repo.id} {...stylex.props(styles.repo)}>
           <h3 {...stylex.props(styles.h3)}>
             <a href={repo.html_url} target="_blank" {...stylex.props(styles.a)}>
@@ -35,16 +35,26 @@ export default function RepoList ({ repos, scrollAction }: RepoListProps) {
             </a>
           </h3>
           <div {...stylex.props(styles.stats)}>
-            <span {...stylex.props(styles.span)}><FontAwesomeIcon icon={faEye} /> {repo.watchers_count}</span>
-            <span {...stylex.props(styles.span)}><FontAwesomeIcon icon={faCodeBranch} /> {repo.forks_count}</span>
-            <span {...stylex.props(styles.span)}><FontAwesomeIcon icon={faStar} /> {repo.stargazers_count}</span>
+            <span {...stylex.props(styles.span)}>
+              <FontAwesomeIcon icon={faEye} /> {repo.watchers_count}
+            </span>
+            <span {...stylex.props(styles.span)}>
+              <FontAwesomeIcon icon={faCodeBranch} /> {repo.forks_count}
+            </span>
+            <span {...stylex.props(styles.span)}>
+              <FontAwesomeIcon icon={faStar} /> {repo.stargazers_count}
+            </span>
           </div>
         </div>
       ))}
-      <FontAwesomeIcon icon={faSpinner} {...stylex.props(styles.spinner)} pulse />
+      <FontAwesomeIcon
+        icon={faSpinner}
+        {...stylex.props(styles.spinner)}
+        pulse
+      />
     </div>
   );
-};
+}
 
 const styles = stylex.create({
   repos: {
@@ -59,7 +69,8 @@ const styles = stylex.create({
     overflowX: 'hidden',
     overflowY: 'auto',
     padding: 0,
-    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+    boxShadow:
+      '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
   },
   repo: {
     borderBottom: '1px solid rgba(0, 0, 0, 0.2)',
