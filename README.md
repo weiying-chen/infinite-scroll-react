@@ -1,10 +1,10 @@
 # Populook (React)
 
-Search population by city or state.
+Infinite scroll with React
 
-![](https://github.com/weiying-chen/populook-react/blob/main/screenshot.png)
+![](https://github.com/weiying-chen/infinite-scroll-react/blob/main/screenshot.png)
 
-**[Live Demo](https://populook-react.vercel.app/)**
+**[Live Demo](https://infinite-scroll-react-demo.vercel.app/)**
 
 **[Vue Version](https://github.com/weiying-chen/populook-vue)**
 
