@@ -12,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     getRepos();
-  }, []); // Empty dependency array to mimic 'onMounted' in Vue
+  }, []);
 
   const getRepos = async () => {
     if (noMoreRepos) return;
