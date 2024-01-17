@@ -1,6 +1,6 @@
 # Infinite Scroll (React)
 
-Infinite scroll with React
+Endless scrolling displaying Github repositories
 
 ![](https://github.com/weiying-chen/infinite-scroll-react/blob/main/screenshot.png)
 
